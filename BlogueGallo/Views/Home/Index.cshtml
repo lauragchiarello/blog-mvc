@@ -1,8 +1,17 @@
-﻿@{
+﻿@model List<Postagem>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">BLOG DO GALLO</DOc></h1>
+    <p>Confira aqui as últimas novidades do mundo!!</a>.</p>
 </div>
+
+@foreach (Postagem postagem in Model)
+{
+    <p>@postagem.Nome</p>
+    <img src="@postagem.Foto" width="300"/>
+    <p>@postagem.Descricao</p>
+    <p>@postagem.Texto</p>
+}
