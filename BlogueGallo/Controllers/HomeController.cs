@@ -21,7 +21,7 @@ public class HomeController : Controller
 
         Categoria ia = new(){
             Id = 2,
-            Nome = "IA"
+            Nome = "Casa"
         };
         
         Categoria design = new(3,"Design");
@@ -75,6 +75,10 @@ public class HomeController : Controller
         
         ];
         return View(postagens);
+    }
+
+    public IActionResult Postagem(int id){
+        return View();
     }
 
     public IActionResult Privacy()
