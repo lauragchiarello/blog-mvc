@@ -7,14 +7,12 @@ namespace BlogueGallo.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private List<Categoria> Categorias;
+    private List<Postagem> postagens;
 
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-    }
-
-    public IActionResult Index()
-    {
         Categoria tecnologia = new();
         tecnologia.Id = 1;
         tecnologia.Nome = "Tecnologia";
@@ -25,8 +23,7 @@ public class HomeController : Controller
         };
         
         Categoria design = new(3,"Design");
-
-        List<Postagem> postagens = [
+       postagens = [
 
             new() {
                 Id = 2,
@@ -74,11 +71,24 @@ public class HomeController : Controller
             },
         
         ];
+    }
+
+    public IActionResult Index()
+    {
+        
+
+      
         return View(postagens);
     }
 
-    public IActionResult Postagem(int id){
-        return View();
+    public IActionResult Postagem(int id)
+    {   
+        var postagem = postagens
+            .Where(p => p.Id == id)
+            .SingleOrDefault();
+        if (postagem == null)
+            return NotFound();
+        return View(postagem);
     }
 
     public IActionResult Privacy()
