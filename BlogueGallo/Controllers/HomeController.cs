@@ -36,6 +36,7 @@ public class HomeController : Controller
                 Thumbnail = "/img/casa2.jpg",
                 Foto = "/img/casa2.jpg"
             },
+            
             new() {
                 Id = 3,
                 Nome = "São Carlos/SP",
